@@ -12,7 +12,7 @@ inline size_t hash_function( const std::string& key, size_t capacity) {
 }
 
 template< typename Value>
-inline size_t quadratic_probing(const std::vector<Pair<Value>*> key, size_t length, size_t hash_value) {
+inline size_t quadratic_probing( const std::vector<Pair<Value>*> key, size_t length, size_t hash_value) {
     auto new_hash = hash_value;
     for (size_t i : range_square(length)) {
         new_hash = (new_hash + i * i) % length;  

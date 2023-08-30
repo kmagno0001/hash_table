@@ -10,7 +10,7 @@ public:
     template<typename... Args >
     Hash_Map( const Args... values);
 
-    const Value operator[] (const std::string param);
+    const Pair<Value>* operator[] (const std::string param);
 
     void add(const Pair<Value> pair);
     void remove(const std::string);
@@ -46,4 +46,10 @@ Hash_Map<Value>::Hash_Map(const Args... values) :
 template< typename Value>
 size_t Hash_Map< Value>::size() {
     return length;
+}
+
+template< typename Value>
+const Pair<Value>* Hash_Map<Value>::operator[] ( const std::string param ) {
+    const size_t hashKey = hash_function<Value>( param, length);
+    return map[hashKey];
 }
